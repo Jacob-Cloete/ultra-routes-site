@@ -25,6 +25,7 @@
     cursorD: null,        // km along route currently highlighted
     markers: [],
     firstFit: true,
+    camToken: 0,         // bumped to cancel a two-step route transition
     fly: { active: false, token: 0, d: 0, speedIdx: 1, range: 5.5, pitch: 70, bearing: 0, lng: 0, lat: 0, ele: 0, last: 0 }
   };
 
@@ -222,7 +223,7 @@
     zoom: 9.5,
     pitch: initial.view?.pitch ?? 58,
     bearing: initial.view?.bearing ?? 0,
-    minZoom: 3,
+    minZoom: 1.5,
     maxZoom: 17.5,
     maxPitch: 80,
     attributionControl: { compact: true },
@@ -366,7 +367,7 @@
     const route = state.route, t = state.data;
     if (!route || !t) return;
     const c = map.getCenter();
-    const far = haversineKm(c.lng, c.lat, (t.bounds[0][0] + t.bounds[1][0]) / 2, (t.bounds[0][1] + t.bounds[1][1]) / 2) > 800;
+    const travelKm = haversineKm(c.lng, c.lat, (t.bounds[0][0] + t.bounds[1][0]) / 2, (t.bounds[0][1] + t.bounds[1][1]) / 2);
     // Fit the track (not just its bounding box) to the free area of the screen for the
     // chosen bearing. Done by hand because cameraForBounds mis-centres when bearing and
     // asymmetric padding are combined.
@@ -387,11 +388,29 @@
     const zoom = Math.log2(Math.min(availW / (x1 - x0), availH / (y1 - y0))) + (route.view?.zoomOffset ?? 0);
     const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
     const wx = cx * cos - cy * sin, wy = cx * sin + cy * cos;
-    const center = [wx / WORLD * 360 - 180, Math.atan(Math.sinh(Math.PI * (1 - 2 * wy / WORLD))) * 180 / Math.PI];
+    const unproject = (x, y) => [x / WORLD * 360 - 180, Math.atan(Math.sinh(Math.PI * (1 - 2 * y / WORLD))) * 180 / Math.PI];
+    const center = unproject(wx, wy);
 
     const view = { center, zoom, bearing, pitch: route.view?.pitch ?? 58, padding: pad };
-    if (animate && !far) map.flyTo({ ...view, duration: 2200, essential: true });
-    else map.jumpTo(view);
+    const token = ++state.camToken;
+    if (!animate) { map.jumpTo(view); return; }
+    if (travelKm < 5) { map.flyTo({ ...view, duration: 1800, essential: true }); return; } // same place: just re-frame
+
+    // Switching races: rise to a flat, north-up view that frames both where we were and
+    // where we're going, hold a beat so the geography registers, then descend into the
+    // new route. (A plain flyTo stays tilted and spins the compass while zoomed out,
+    // which is disorienting.)
+    const ax = mx(c.lng), ay = my(c.lat);
+    const sep = Math.max(Math.hypot(ax - wx, ay - wy), 1e-6); // px between the two at zoom 0
+    const apexZoom = clamp(Math.log2(0.45 * Math.min(availW, availH) / sep), 1.8, Math.min(map.getZoom(), zoom) - 1.2);
+    const leg = 1400 + 500 * Math.log10(1 + travelKm / 100);
+    map.easeTo({ center: unproject((ax + wx) / 2, (ay + wy) / 2), zoom: apexZoom, pitch: 0, bearing: 0, padding: pad, duration: leg, essential: true });
+    map.once('moveend', () => {
+      if (state.camToken !== token) return;
+      setTimeout(() => {
+        if (state.camToken === token) map.easeTo({ ...view, duration: leg + 500, essential: true });
+      }, 350);
+    });
   }
 
   /* ------------------------------------------------------------------------
@@ -592,6 +611,7 @@
     }
     const p = pointAt(t, d);
     setCursor(d);
+    state.camToken++;
     map.easeTo({ center: [p.lng, p.lat], zoom: Math.max(map.getZoom(), 12.8), duration: 1400, essential: true });
   });
 
@@ -637,6 +657,7 @@
     if (!t || f.active) return;
     if (f.d >= t.total - 0.05) f.d = 0;
     f.active = true;
+    state.camToken++; // abandon any route transition still in progress
     const token = ++f.token;
     updateFlyButton();
 
@@ -698,7 +719,8 @@
     ev.stopPropagation();
     state.fly.range = clamp(state.fly.range * Math.exp(ev.deltaY * 0.0015), 1.2, 16);
   }, { capture: true, passive: false });
-  map.getCanvasContainer().addEventListener('pointerdown', () => stopFly());
+  map.getCanvasContainer().addEventListener('pointerdown', () => { state.camToken++; stopFly(); });
+  map.getCanvasContainer().addEventListener('wheel', () => { state.camToken++; }, { passive: true });
 
   /* ------------------------------------------------------------------------
      Map hover
