@@ -69,17 +69,17 @@ window.ROUTES = [
     edition: '2026 course'
   },
   {
-    id: 'transgrancanaria',
-    name: 'Transgrancanaria',
-    fullName: 'Transgrancanaria Classic',
-    tab: 'Gran Canaria',
-    place: 'Las Palmas to Maspalomas, Gran Canaria, Spain',
-    gpx: 'gpx/transgrancanaria-classic.gpx',
+    id: 'miut',
+    name: 'MIUT',
+    fullName: 'Madeira Island Ultra-Trail',
+    tab: 'Madeira',
+    place: 'Porto Moniz to Machico, Madeira, Portugal',
+    gpx: 'gpx/miut.gpx',
     color: '#4dc3ff',
-    center: [-15.58, 27.96],
-    view: { bearing: -25, pitch: 55 },
-    blurb: 'Across Gran Canaria from north to south: from the beach at Las Palmas over the volcanic summits at the centre of the island and down to the dunes of Maspalomas.',
-    source: { label: 'transgrancanaria.net', url: 'https://transgrancanaria.net/en/classic-126km/' },
-    edition: '2026 course'
+    center: [-16.97, 32.76],
+    view: { bearing: -10, pitch: 56 },
+    blurb: 'The MIUT Legend: coast to coast across Madeira, from Porto Moniz in the north-west over the island\u2019s highest peaks, Pico Ruivo and Pico do Arieiro, to the sea at Machico.',
+    source: { label: 'miutmadeira.com', url: 'https://miutmadeira.com/miut-legend-ultra-trail-madeira/' },
+    edition: 'Current Legend course'
   }
 ];
