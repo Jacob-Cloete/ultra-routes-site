@@ -115,12 +115,22 @@
       waypoints: []
     };
 
+    const tag = (node, name) => (node.getElementsByTagName(name)[0]?.textContent || '').trim();
     for (const w of xml.getElementsByTagName('wpt')) {
-      const name = (w.getElementsByTagName('name')[0]?.textContent || '').trim();
+      let name = tag(w, 'name');
       const la = parseFloat(w.getAttribute('lat')), lo = parseFloat(w.getAttribute('lon'));
       if (!name || !Number.isFinite(la) || !Number.isFinite(lo)) continue;
-      track.waypoints.push({ name, lng: lo, lat: la });
+      if (/^start\b|finish/i.test(name)) continue; // we draw our own start/finish
+      const info = `${name} ${tag(w, 'cmt')}`, sym = tag(w, 'sym');
+      let kind = 'poi';
+      if (/base ?vita|base ?vie|life ?base/i.test(info)) kind = 'base';
+      else if (/^(col|colle|passo?|fen[eê]tre|finestra)\b/i.test(name) || /triangle|summit/i.test(sym)) kind = 'col';
+      name = name.replace(/^BaseVita-/i, '').replace(/\s*-\s*waypoint$/i, '');
+      track.waypoints.push({ name, kind, lng: lo, lat: la, d: nearestDistance(track, { lng: lo, lat: la }) });
     }
+    // Busy files (Tor des Géants has 80) only label the life bases until you zoom in
+    const busy = track.waypoints.length > 12;
+    for (const w of track.waypoints) w.major = !busy || w.kind === 'base';
     return track;
   }
 
@@ -326,7 +336,10 @@
 
     state.markers.forEach((m) => m.remove());
     state.markers = [];
-    for (const w of t.waypoints) makeMarker(w.name, w.lng, w.lat);
+    for (const w of t.waypoints) {
+      const label = w.kind === 'col' ? `▲ ${w.name}` : w.kind === 'base' && !t.waypoints.every((x) => x.major) ? `${w.name} · life base` : w.name;
+      makeMarker(label, w.lng, w.lat, `${w.major ? '' : 'mk-minor'} mk-${w.kind}`);
+    }
     const last = t.n - 1;
     if (haversineKm(t.lng[0], t.lat[0], t.lng[last], t.lat[last]) < 0.5) {
       makeMarker('Start · Finish', t.lng[0], t.lat[0], 'mk-start');
@@ -415,7 +428,7 @@
 
   const canvas = $('profile-canvas');
   const ctx = canvas.getContext('2d');
-  const PAD = { l: 56, r: 10, t: 8, b: 20 };
+  const PAD = { l: 56, r: 10, t: 12, b: 20 };
 
   function niceStep(range, maxTicks) {
     const raw = range / Math.max(1, maxTicks);
@@ -515,6 +528,26 @@
     ctx.lineWidth = 1.6;
     ctx.lineJoin = 'round';
     ctx.stroke(line);
+
+    // key waypoints (life bases / named checkpoints)
+    ctx.font = '10px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'center';
+    let lastLabelEnd = -Infinity;
+    for (const wp of t.waypoints.filter((x) => x.major).sort((a, b) => a.d - b.d)) {
+      const x = Math.round(X(wp.d)) + 0.5;
+      ctx.strokeStyle = 'rgba(255,255,255,0.28)';
+      ctx.setLineDash([2, 3]);
+      ctx.beginPath(); ctx.moveTo(x, PAD.t + 11); ctx.lineTo(x, PAD.t + ph); ctx.stroke();
+      ctx.setLineDash([]);
+      const tw = ctx.measureText(wp.name).width;
+      const lx = clamp(x, PAD.l + tw / 2, w - PAD.r - tw / 2);
+      if (lx - tw / 2 > lastLabelEnd + 6) {
+        ctx.fillStyle = '#aab3c0';
+        ctx.fillText(wp.name, lx, PAD.t - 2);
+        lastLabelEnd = lx + tw / 2;
+      }
+    }
 
     // high point
     const hx = X(t.dist[t.maxIdx]), hy = Y(t.maxEle);
@@ -793,6 +826,9 @@
     if (window.matchMedia('(max-width: 760px)').matches) {
       document.querySelector('.maplibregl-ctrl-attrib')?.classList.remove('maplibregl-compact-show');
     }
+    const syncMinor = () => map.getContainer().classList.toggle('show-minor', map.getZoom() >= 11);
+    map.on('zoom', syncMinor);
+    syncMinor();
     mapReady = true;
     applyRouteToMap();
   });

@@ -93,14 +93,14 @@ a { color: inherit; }
 }
 
 /* route switcher */
-.route-tabs { display: flex; flex-direction: column; gap: 6px; }
+.route-tabs { display: flex; flex-direction: column; gap: 5px; }
 .route-tab {
   position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1px;
-  padding: 9px 12px 9px 16px;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 12px 8px 18px;
   text-align: left;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--line);
@@ -123,8 +123,8 @@ a { color: inherit; }
   border-color: var(--line-strong);
 }
 .route-tab.is-active::before { opacity: 1; }
-.tab-name { font-weight: 650; font-size: 14px; }
-.tab-sub { color: var(--text-3); font-size: 12px; }
+.tab-name { font-weight: 650; font-size: 14px; white-space: nowrap; }
+.tab-sub { color: var(--text-3); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .route-tab.is-active .tab-sub { color: var(--text-2); }
 
 /* route info */
@@ -327,6 +327,13 @@ button:focus-visible, a:focus-visible, input:focus-visible {
   border: 2px solid #111;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
 }
+/* minor waypoints (cols, refuges, refreshment points) appear once zoomed in */
+.mk-minor { display: none; }
+.show-minor .mk-minor { display: flex; }
+.mk-minor .mk-label { font-size: 10.5px; font-weight: 500; padding: 1px 6px; background: rgba(13, 16, 21, 0.78); }
+.mk-minor .mk-dot { width: 7px; height: 7px; border-width: 1.5px; }
+.mk-col .mk-label { color: #d7f5d0; }
+.mk-base .mk-label { border-color: var(--accent); }
 .mk-start .mk-label { background: var(--accent); color: #111; border-color: transparent; font-weight: 700; }
 .mk-start .mk-dot { width: 13px; height: 13px; background: var(--accent); border-color: #fff; }
 
@@ -368,7 +375,7 @@ button:focus-visible, a:focus-visible, input:focus-visible {
 
   .route-tabs { flex-direction: row; overflow-x: auto; scrollbar-width: none; }
   .route-tabs::-webkit-scrollbar { display: none; }
-  .route-tab { flex: 1 0 auto; padding: 7px 12px; align-items: center; }
+  .route-tab { flex: 1 0 auto; padding: 7px 12px; justify-content: center; }
   .route-tab::before { display: none; }
   .route-tab.is-active { border-color: var(--tab-color, var(--accent)); }
   .tab-sub { display: none; }
