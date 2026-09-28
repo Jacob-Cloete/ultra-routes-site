@@ -22,7 +22,7 @@
     dialog.querySelector('.close-dialog').addEventListener('click',()=>dialog.close());
     dialog.addEventListener('click',event=>{if(event.target!==dialog)return;const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();});
   }
-  const landmarkIcon=t=>`<svg class="landmark-icon" viewBox="0 0 64 48" aria-hidden="true" focusable="false"><use href="assets/landmarks.svg?v=20260928-4#${esc(t.icon)}"></use></svg>`;
+  const landmarkIcon=t=>`<svg class="landmark-icon" viewBox="0 0 64 48" aria-hidden="true" focusable="false"><use href="assets/landmarks.svg?v=20260928-5#${esc(t.icon)}"></use></svg>`;
   function render(){
     $('#trip-list').innerHTML=trips.map(t=>`
       <details class="trip" name="adventure" id="${esc(t.id)}" data-trip="${esc(t.id)}">
@@ -37,6 +37,10 @@
           <span class="trip-plus" aria-hidden="true">+</span>
         </summary>
         <div class="trip-body">
+          ${t.photo?`<figure class="trip-photo">
+            <img data-src="${esc(t.photo.src)}" alt="${esc(t.photo.alt)}" width="900" height="600" decoding="async" style="object-position:${esc(t.photo.position)}">
+            <figcaption><a href="${esc(t.photo.source)}" target="_blank" rel="noopener noreferrer">Photo: ${esc(t.photo.author)}</a> · <a href="${esc(t.photo.licenseUrl)}" target="_blank" rel="noopener noreferrer">${esc(t.photo.license)}</a> · cropped</figcaption>
+          </figure>`:''}
           <p class="trip-description">${esc(t.summary)}</p>
           <div class="trip-stats"><div><span>Training begins</span><strong>${esc(t.training)}</strong></div><div><span>Preparation</span><strong>12 weeks</strong></div></div>
           <p class="trip-route">${esc(t.route)}</p>
@@ -54,7 +58,16 @@
           <p class="places-note">Jacob + up to ${t.capacity} guests. Price to follow. Signing up does not reserve a place.</p>
         </div>
       </details>`).join('');
-    $$('.trip').forEach(detail=>detail.addEventListener('toggle',()=>{const open=$('.trip[open]');$$('.world-pin').forEach(pin=>pin.classList.toggle('active',pin.dataset.destination===open?.dataset.trip));}));
+    $$('.trip').forEach(detail=>detail.addEventListener('toggle',()=>{
+      const open=$('.trip[open]');
+      const photo=open?.querySelector('.trip-photo img[data-src]');
+      if(photo){
+        photo.addEventListener('error',()=>{photo.closest('figure').hidden=true;},{once:true});
+        photo.src=photo.dataset.src;
+        delete photo.dataset.src;
+      }
+      $$('.world-pin').forEach(pin=>pin.classList.toggle('active',pin.dataset.destination===open?.dataset.trip));
+    }));
     $$('[data-join]').forEach(b=>b.addEventListener('click',()=>openSignup(b.dataset.join,b)));
     $$('[data-terrain]').forEach(b=>b.addEventListener('click',()=>openTerrain(trips.find(t=>t.id===b.dataset.terrain))));
     renderMap();filter(year);
@@ -102,5 +115,5 @@
     map.addControl(new maplibregl.NavigationControl(),'top-right');map.on('load',()=>{$('.terrain-feedback').textContent='Drag to explore · pinch or scroll to zoom';});map.on('error',()=>{$('.terrain-feedback').textContent='Some map imagery is unavailable. You can still explore the trip details.';});new ResizeObserver(()=>map?.resize()).observe($('#trip-terrain'));
   }catch(error){$('.terrain-feedback').textContent=error.message;}}
   terrainDialog.addEventListener('close',()=>{terrainRequest++;map?.stop();});
-  fetch('data/adventures.json?v=20260928-4').then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{trips=data.trips;render();const id=decodeURIComponent(location.hash.slice(1));const target=trips.find(t=>t.id===id);if(target){document.getElementById(id).open=true;document.getElementById(id).scrollIntoView();}}).catch(()=>{$('#trip-list').innerHTML='<p class="loading-note">The calendar couldn’t load. <button type="button" class="text-button" id="retry-calendar">Try again</button></p>';$('#retry-calendar').addEventListener('click',()=>location.reload());});
+  fetch('data/adventures.json?v=20260928-5').then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{trips=data.trips;render();const id=decodeURIComponent(location.hash.slice(1));const target=trips.find(t=>t.id===id);if(target){document.getElementById(id).open=true;document.getElementById(id).scrollIntoView();}}).catch(()=>{$('#trip-list').innerHTML='<p class="loading-note">The calendar couldn’t load. <button type="button" class="text-button" id="retry-calendar">Try again</button></p>';$('#retry-calendar').addEventListener('click',()=>location.reload());});
 })();

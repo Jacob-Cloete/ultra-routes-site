@@ -12,6 +12,11 @@
 .trip-title .landmark-icon{color:#986146}
 .trip-title>span{min-width:0;overflow-wrap:break-word}
 .trip-pace{font-size:10px;color:#875032;line-height:1.5}
+.trip-photo{margin:0 0 23px}
+.trip-photo img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;background:#d8dfd4;border-radius:2px}
+.trip-photo figcaption{margin-top:7px;font-size:10px;line-height:1.6;color:var(--muted);overflow-wrap:anywhere}
+.trip-photo figcaption a{text-decoration:none}
+.trip-photo figcaption a:hover{text-decoration:underline;text-underline-offset:3px}
 .route-sources{display:flex;flex-direction:column;align-items:flex-start}
 .world-pin{width:44px;height:44px;min-width:44px;padding:4px;display:grid;place-items:center;background:#e9ece5;z-index:1}
 .world-pin .landmark-icon{width:33px;height:25px;stroke-width:1.8}
