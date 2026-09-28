@@ -14,7 +14,7 @@ def request(data, origin='http://127.0.0.1:8778'):
         with urlopen(r,timeout=15) as f:return f.status,json.load(f)
     except HTTPError as e:return e.code,json.load(e)
 def signup(n=0, **extra):
-    return {'trip':'scotland-2027','name':'Disposable integration test','email':f'{tag}-{n}@example.com','consent':True,**extra}
+    return {'trip':'dolomites-2027','name':'Disposable integration test','email':f'{tag}-{n}@example.com','consent':True,**extra}
 def cli(action, ident):
     return subprocess.run(PHP+[str(ROOT/'tools/manage-interest.php'),action,str(ident)],capture_output=True,text=True,cwd=ROOT)
 tokens=[]

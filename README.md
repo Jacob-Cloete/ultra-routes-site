@@ -6,7 +6,8 @@ Small-group fastpacking calendar for https://fast.jacobcloete.pro/. Eight propos
 
 - `index.html`, `css/adventure.css`, `css/calendar.css`: minimal landing page and responsive calendar.
 - `js/calendar.js`: year filters, world map selection, expandable trip details, optional 3D terrain and signup UI.
-- `data/adventures.json`: proposed dates, training starts, distances, outline stages and primary route references. Edit the calendar here.
+- `data/adventures.json`: proposed dates, training starts, distance labels, landmark IDs, outline stages and primary route references. Edit the calendar here.
+- `assets/landmarks.svg`: original, simplified profiles of the eight landmarks. Used next to trip names and on desktop map markers.
 - `api/interest.php`, `api/storage.php`: PHP + PDO SQLite interest storage. No mail service or payment integration is required.
 - `privacy.html`, `manage.html`, `js/manage.js`: data-use explanation and private withdrawal links.
 - `tools/manage-interest.php`: private CLI administration. Never expose it as an HTTP endpoint.
@@ -18,6 +19,19 @@ Every departure is **proposed**. Months, trail-day counts and overnight stages a
 Four is the intended guest capacity, in addition to Jacob. An interest signup does **not** use a guest place. There are no fabricated live availability counts. The CLI confirmation operation atomically enforces a maximum of four confirmed guests per trip; further people can remain interested or be marked waitlist.
 
 The 3D views show real terrain at the destinations; no unverified demo line is presented as an actual hiking route. The previous synthetic routes and race viewer remain in Git history and are not loaded by the new page.
+
+## Current selection and future trips
+
+- 2027: July — Tre Cime & Sorapis; September — Mont Blanc / Aiguilles Rouges.
+- 2028: February — Torres del Paine W; July — Laugavegur to Skógafoss.
+- 2029: June — Santa Cruz & Alpamayo; September — The Rockwall.
+- 2030: April — Annapurna Sanctuary; November — Cradle Mountain / Overland.
+
+The Dolomites 50–60 km distance is a **target**, not a verified track. The roughly 40 km published reference uses a bus finish; the all-on-foot extension remains to be designed. Nepal and Peru require a separate acclimatisation plan. All stages are proposals.
+
+`#future-adventures` is a minimal placeholder after the calendar for trips from 2031 onwards. No additional destinations, dates or signups are promised there yet. Populate it when a future selection is approved; keep it separate from the eight departures above.
+
+Trip IDs are signup identifiers: never reuse a retired ID for a different adventure. Changing destinations does not migrate or delete existing interest records; earlier signups remain available through the private CLI and their withdrawal links continue to work. The revised Patagonia departure uses `patagonia-2028`; records for the old 2030 proposal remain separate.
 
 ## Signups and privacy
 
@@ -31,7 +45,7 @@ On Hostinger SSH, from the deployed site directory:
 
 ```sh
 php tools/manage-interest.php list
-php tools/manage-interest.php list scotland-2027
+php tools/manage-interest.php list dolomites-2027
 php tools/manage-interest.php confirm 12
 php tools/manage-interest.php waitlist 12
 php tools/manage-interest.php delete 12

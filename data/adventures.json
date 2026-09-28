@@ -2,38 +2,46 @@
   "reviewed": "2026-09-28",
   "trips": [
     {
-      "id": "scotland-2027",
-      "name": "West Highland Way",
-      "region": "Scotland",
-      "country": "United Kingdom",
-      "month": "May",
+      "id": "dolomites-2027",
+      "name": "Tre Cime & Sorapis",
+      "region": "Dolomites",
+      "country": "Italy",
+      "month": "July",
       "year": 2027,
-      "training": "February 2027",
-      "km": 69,
-      "days": 3,
+      "training": "April 2027",
+      "km": 55,
+      "distanceLabel": "50–60 km target",
+      "days": 4,
       "coord": [
-        -4.8,
-        56.65
+        12.3,
+        46.62
       ],
-      "route": "Tyndrum → Fort William",
-      "summary": "The northern section of the West Highland Way, from Tyndrum to Fort William.",
+      "mapOffset": [
+        40,
+        -20
+      ],
+      "icon": "tre-cime",
+      "landmark": "Tre Cime di Lavaredo",
+      "route": "Val Fiscalina → Tre Cime → Misurina → Sorapis → Cortina area",
+      "summary": "The three limestone towers of Tre Cime and the turquoise lake at Sorapis. A proposed hut-to-hut route.",
       "stops": [
-        "Tyndrum → Kingshouse",
-        "Kingshouse → Kinlochleven",
-        "Kinlochleven → Fort William"
+        "Val Fiscalina → Pian di Cengia area",
+        "Pian di Cengia → Tre Cime → Auronzo area",
+        "Auronzo area → Misurina",
+        "Misurina → Sorapis → Cortina area"
       ],
-      "focus": "Sustained climbing, wet-weather kit and comfortable back-to-back trail days.",
-      "note": "Northern section only. Overnight stops and transfers depend on accommodation availability.",
-      "source": "https://www.westhighlandway.org/the-route/suggested-itineraries/",
-      "sourceName": "West Highland Way",
-      "distanceNote": "About 69 km; the official short itinerary lists 43 miles.",
+      "focus": "Steep climbs, rocky descents, exposed paths and moving with a hut-to-hut pack.",
+      "note": "This is a route concept. The final approach and finish need local assessment to create a continuous itinerary without via ferrata. Hut bookings and exposed trail sections must be checked.",
+      "source": "https://huttohuthikingdolomites.com/tours/tre-cime-di-lavaredo-hut-to-hut-hiking-tour",
+      "sourceName": "Tre Cime–Sorapis traverse reference",
+      "distanceNote": "50–60 km is our planning target, not a measured track. The published reference is about 40 km and includes a bus finish; our proposed all-on-foot extension still needs mapping.",
       "number": "01",
       "capacity": 4,
       "status": "proposed"
     },
     {
       "id": "alps-2027",
-      "name": "Aiguilles Rouges",
+      "name": "Mont Blanc · Aiguilles Rouges",
       "region": "French Alps",
       "country": "France",
       "month": "September",
@@ -46,7 +54,7 @@
         45.98
       ],
       "route": "Chamonix → Aiguilles Rouges → Chamonix",
-      "summary": "A mountain circuit above Chamonix, with views of the Mont Blanc massif.",
+      "summary": "Lac Blanc, the Bérard valley and Brévent, with views across to Mont Blanc and its glaciers.",
       "stops": [
         "Chamonix → Lac Blanc area",
         "Lac Blanc area → Moëde Anterne area",
@@ -59,138 +67,22 @@
       "distanceNote": "About 50 km, based on the established mountain circuit. Our overnight stages are a proposal, not a booked itinerary.",
       "number": "02",
       "capacity": 4,
-      "status": "proposed"
+      "status": "proposed",
+      "icon": "mont-blanc",
+      "landmark": "Mont Blanc & Lac Blanc",
+      "mapOffset": [
+        -40,
+        30
+      ]
     },
     {
-      "id": "kepler-2028",
-      "name": "Kepler Track",
-      "region": "New Zealand",
-      "country": "New Zealand",
-      "month": "February",
-      "year": 2028,
-      "training": "November 2027",
-      "km": 60,
-      "days": 3,
-      "coord": [
-        167.6,
-        -45.4
-      ],
-      "route": "Te Anau → Luxmore → Iris Burn → Te Anau",
-      "summary": "A loop through Fiordland’s alpine ridges, beech forest and lakeshores.",
-      "stops": [
-        "Kepler car park → Luxmore Hut",
-        "Luxmore Hut → Iris Burn Hut",
-        "Iris Burn Hut → Kepler car park"
-      ],
-      "focus": "Long descents, exposed ridgelines and carrying everything needed between huts.",
-      "note": "DOC hut bookings and any required commercial permissions are still to be secured. Add travel and weather-buffer days.",
-      "source": "https://www.doc.govt.nz/keplertrack",
-      "sourceName": "New Zealand Department of Conservation",
-      "distanceNote": "60 km for the full loop, as published by DOC.",
-      "number": "03",
-      "capacity": 4,
-      "status": "proposed"
-    },
-    {
-      "id": "iceland-2028",
-      "name": "Laugavegur",
-      "region": "Iceland",
-      "country": "Iceland",
-      "month": "July",
-      "year": 2028,
-      "training": "April 2028",
-      "km": 55,
-      "days": 3,
-      "coord": [
-        -19.3,
-        63.98
-      ],
-      "route": "Landmannalaugar → Þórsmörk",
-      "summary": "A point-to-point route through rhyolite mountains, lava fields and river valleys.",
-      "stops": [
-        "Landmannalaugar → Álftavatn",
-        "Álftavatn → Emstrur",
-        "Emstrur → Þórsmörk"
-      ],
-      "focus": "Pack practice, cold-and-wet preparation and efficient movement on loose terrain.",
-      "note": "Summer road access, hut availability and river conditions determine the final plan. River crossings need an on-site decision.",
-      "source": "https://www.fi.is/en/hiking-trails/trails/laugavegur",
-      "sourceName": "Ferðafélag Íslands",
-      "distanceNote": "Approximately 54–55 km in the trail association’s guide.",
-      "number": "04",
-      "capacity": 4,
-      "status": "proposed"
-    },
-    {
-      "id": "sabie-2029",
-      "name": "Fanie Botha Trail",
-      "region": "South Africa",
-      "country": "South Africa",
-      "month": "April",
-      "year": 2029,
-      "training": "January 2029",
-      "km": 59,
-      "days": 4,
-      "coord": [
-        30.78,
-        -25.03
-      ],
-      "route": "Ceylon → Maritzbos → Stables → Mac Mac → Graskop",
-      "summary": "A forest and escarpment route in the Sabie area of Mpumalanga.",
-      "stops": [
-        "Ceylon → Maritzbos",
-        "Maritzbos → Stables",
-        "Stables → Mac Mac",
-        "Mac Mac → Graskop via Mac Mac Pools"
-      ],
-      "focus": "Uneven forest trails, humid conditions and repeated days with a light pack.",
-      "note": "The longer Graskop finish is proposed. SAFCOL must reconfirm trail access, hut condition, distances and group arrangements.",
-      "source": "https://forestrysouthafrica.co.za/wp-content/uploads/2019/01/Forestry-Explained-Recreational-Map-activities-and-attractions-downloadable-format-Jan-2019.pdf",
-      "sourceName": "Forestry South Africa trail guide",
-      "distanceNote": "About 59 km for the 58.8 km option described in the forestry guide; current alignment must be checked.",
-      "number": "05",
-      "capacity": 4,
-      "status": "proposed"
-    },
-    {
-      "id": "japan-2029",
-      "name": "Kumano Kodo · Kohechi",
-      "region": "Japan",
-      "country": "Japan",
-      "month": "October",
-      "year": 2029,
-      "training": "July 2029",
-      "km": 70,
-      "days": 4,
-      "coord": [
-        135.65,
-        34.0
-      ],
-      "route": "Koyasan → Kumano Hongu Taisha",
-      "summary": "A mountain pilgrimage route linking Koyasan with Kumano Hongu Taisha.",
-      "stops": [
-        "Koyasan → Omata",
-        "Omata → Miura-guchi",
-        "Miura-guchi → Totsukawa",
-        "Totsukawa → Hongu"
-      ],
-      "focus": "Steep passes, stone steps and patient, controlled descending.",
-      "note": "For experienced trail travellers. Every village overnight must be secured; walk through sacred sites and yield to pilgrims.",
-      "source": "https://www.tb-kumano.jp/en/kumano-kodo/kohechi/",
-      "sourceName": "Tanabe City Kumano Tourism Bureau",
-      "distanceNote": "Approximately 65–70 km, depending on endpoints and current diversions.",
-      "number": "06",
-      "capacity": 4,
-      "status": "proposed"
-    },
-    {
-      "id": "patagonia-2030",
+      "id": "patagonia-2028",
       "name": "Torres del Paine · W",
       "region": "Patagonia",
       "country": "Chile",
       "month": "February",
-      "year": 2030,
-      "training": "November 2029",
+      "year": 2028,
+      "training": "November 2027",
       "km": 70,
       "days": 4,
       "coord": [
@@ -198,7 +90,7 @@
         -50.98
       ],
       "route": "Grey → Paine Grande → French Valley → Base Torres",
-      "summary": "The W route in Torres del Paine, including glacier and mountain viewpoints.",
+      "summary": "The granite towers, French Valley and Grey Glacier on the W route through Torres del Paine.",
       "stops": [
         "Grey sector → Paine Grande",
         "Paine Grande → French Valley → Francés area",
@@ -209,14 +101,167 @@
       "note": "Exact mileage depends on viewpoints and overnight stops. Refuges, access and transfers are unconfirmed; park conditions may change the route.",
       "source": "https://helpcenter.lastorres.com/en/help-center-las-torres-patagonia/w-circuit",
       "sourceName": "Las Torres Patagonia",
-      "distanceNote": "About 70 km in the operator’s overview; side trips and the final itinerary can increase this.",
+      "distanceNote": "The operator’s overview lists about 70 km. Allow roughly 70–85 km depending on the chosen viewpoints and overnight stops; the final track is still to be mapped.",
+      "number": "03",
+      "capacity": 4,
+      "status": "proposed",
+      "icon": "torres",
+      "landmark": "The three Torres",
+      "distanceLabel": "70–85 km"
+    },
+    {
+      "id": "iceland-2028",
+      "name": "Laugavegur to Skógafoss",
+      "region": "Iceland",
+      "country": "Iceland",
+      "month": "July",
+      "year": 2028,
+      "training": "April 2028",
+      "km": 83,
+      "days": 4,
+      "coord": [
+        -19.3,
+        63.98
+      ],
+      "route": "Landmannalaugar → Þórsmörk → Skógar",
+      "summary": "Volcanic hills, lava fields and a pass between glaciers, finishing at Skógafoss.",
+      "stops": [
+        "Landmannalaugar → Álftavatn",
+        "Álftavatn → Emstrur",
+        "Emstrur → Þórsmörk",
+        "Þórsmörk → Fimmvörðuháls → Skógar"
+      ],
+      "focus": "Pack practice, cold-and-wet preparation and efficient movement on loose terrain.",
+      "note": "The final day crosses an exposed pass. Hut availability, snow, river conditions and weather determine the final stages.",
+      "source": "https://www.fi.is/en/hiking-trails/trails/laugavegur",
+      "sourceName": "Ferðafélag Íslands",
+      "distanceNote": "About 80–83 km for Laugavegur plus Fimmvörðuháls. The trail association’s combined itinerary totals 83 km.",
+      "number": "04",
+      "capacity": 4,
+      "status": "proposed",
+      "icon": "skogafoss",
+      "landmark": "Skógafoss waterfall",
+      "extraSources": [
+        {
+          "name": "Fimmvörðuháls · Ferðafélag Íslands",
+          "url": "https://www.fi.is/en/hiking-trails/trails/fimmvorduhals"
+        }
+      ]
+    },
+    {
+      "id": "peru-2029",
+      "name": "Santa Cruz & Alpamayo",
+      "region": "Cordillera Blanca",
+      "country": "Peru",
+      "month": "June",
+      "year": 2029,
+      "training": "March 2029",
+      "km": 50,
+      "days": 4,
+      "coord": [
+        -77.65,
+        -8.9
+      ],
+      "icon": "alpamayo",
+      "landmark": "Alpamayo",
+      "pace": "Extra acclimatisation days",
+      "route": "Vaquería → Punta Unión → Arhuaycocha → Cashapampa",
+      "summary": "Glacial valleys and lakes below the Cordillera Blanca, with views towards Alpamayo and a crossing of Punta Unión.",
+      "stops": [
+        "Vaquería → Paria",
+        "Paria → Punta Unión → Taullipampa",
+        "Taullipampa → Alpamayo viewpoint / Arhuaycocha → Llamacorral",
+        "Llamacorral → Cashapampa"
+      ],
+      "focus": "Consecutive mountain days, sustained climbs, pack carrying and pacing by effort. Training does not replace acclimatisation.",
+      "note": "Punta Unión reaches 4,750 m. Allow extra days in the Huaraz area to acclimatise before the trail. This is a hiking-led trip at altitude, with running only where appropriate; the local guide and conditions determine the pace.",
+      "source": "https://mountainadventures-peru.com/es/caminata-santa-cruz/",
+      "sourceName": "Mountain Adventures Huaraz",
+      "distanceNote": "Approximately 50 km in the operator’s four-day itinerary, including the Alpamayo viewpoint and Arhuaycocha excursion. Exact mileage depends on the final stops.",
+      "number": "05",
+      "capacity": 4,
+      "status": "proposed"
+    },
+    {
+      "id": "rockwall-2029",
+      "name": "The Rockwall",
+      "region": "Canadian Rockies",
+      "country": "Canada",
+      "month": "September",
+      "year": 2029,
+      "training": "June 2029",
+      "km": 54,
+      "days": 3,
+      "coord": [
+        -116.18,
+        51.07
+      ],
+      "icon": "rockwall",
+      "landmark": "The Rockwall & Floe Lake",
+      "route": "Paint Pots → Helmet Falls → Floe Lake",
+      "summary": "Three alpine passes, hanging glaciers and Floe Lake beneath the Rockwall’s limestone cliffs.",
+      "stops": [
+        "Paint Pots → Helmet Falls",
+        "Helmet Falls → Rockwall Pass → Tumbling Pass → Numa Creek",
+        "Numa Creek → Numa Pass → Floe Lake → Floe Lake trailhead"
+      ],
+      "focus": "Long climbs, back-to-back trail days and carrying camping equipment.",
+      "note": "Backcountry campsites, trail access and commercial arrangements need confirmation. Early snow can affect a September departure; the final dates may move within the late-summer window.",
+      "source": "https://parks.canada.ca/pn-np/bc/kootenay/activ/arrierepays-backcountry",
+      "sourceName": "Parks Canada · Kootenay National Park",
+      "distanceNote": "54 km for the Rockwall as published by Parks Canada. The proposed three-day stages depend on campsite availability.",
+      "number": "06",
+      "capacity": 4,
+      "status": "proposed"
+    },
+    {
+      "id": "annapurna-2030",
+      "name": "Annapurna Sanctuary",
+      "region": "Himalayas",
+      "country": "Nepal",
+      "month": "April",
+      "year": 2030,
+      "training": "January 2030",
+      "km": 80,
+      "distanceLabel": "70–85 km",
+      "days": 8,
+      "coord": [
+        83.88,
+        28.53
+      ],
+      "icon": "fishtail",
+      "landmark": "Machhapuchhre · Fishtail",
+      "pace": "Hiking at altitude",
+      "route": "Ghandruk → Annapurna Base Camp → Jhinu Danda",
+      "summary": "Villages and forest on the approach to Annapurna’s mountain amphitheatre, beneath Machhapuchhre’s fishtail summit.",
+      "stops": [
+        "Ghandruk → Chhomrong",
+        "Chhomrong → Bamboo",
+        "Bamboo → Himalaya",
+        "Himalaya → Deurali",
+        "Deurali → Machhapuchhre Base Camp",
+        "Machhapuchhre Base Camp → Annapurna Base Camp → Machhapuchhre Base Camp",
+        "Machhapuchhre Base Camp → Bamboo",
+        "Bamboo → Jhinu Danda"
+      ],
+      "focus": "Repeated days on steep steps, descending strength and patient pacing. Build endurance for a longer trip; fitness does not replace acclimatisation.",
+      "note": "Annapurna Base Camp reaches 4,130 m. Eight trail days are an outline, with time for travel and additional acclimatisation held separately. A licensed local guide must assess the ascent schedule and conditions. This is primarily a hiking trip at altitude.",
+      "source": "https://www.magicalnepal.com/travel-guide/annapurna/annapurna-base-camp-trek-distance/",
+      "sourceName": "Magical Nepal · route distances",
+      "distanceNote": "Roughly 70–85 km for an itinerary starting around Ghandruk. Road access, the return route and lodge choices change the distance; the final itinerary still needs mapping.",
+      "extraSources": [
+        {
+          "name": "Nepal Tourism Board · Annapurna region",
+          "url": "https://trade.ntb.gov.np/tourist-destination/annapurna-region/"
+        }
+      ],
       "number": "07",
       "capacity": 4,
       "status": "proposed"
     },
     {
       "id": "tasmania-2030",
-      "name": "Overland Track",
+      "name": "Cradle Mountain · Overland",
       "region": "Tasmania",
       "country": "Australia",
       "month": "November",
@@ -229,7 +274,7 @@
         -41.9
       ],
       "route": "Cradle Mountain → Narcissus Hut",
-      "summary": "A route through the Cradle Mountain–Lake St Clair National Park.",
+      "summary": "Cradle Mountain, glacial valleys, ancient rainforest and alpine plateaus on the Overland Track.",
       "stops": [
         "Ronny Creek → Windermere area",
         "Windermere → Pelion area",
@@ -243,7 +288,9 @@
       "distanceNote": "65 km to Narcissus; walking around Lake St Clair would add about 17.5 km.",
       "number": "08",
       "capacity": 4,
-      "status": "proposed"
+      "status": "proposed",
+      "icon": "cradle",
+      "landmark": "Cradle Mountain"
     }
   ]
 }

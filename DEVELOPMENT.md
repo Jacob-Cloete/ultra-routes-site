@@ -18,7 +18,7 @@ This temporary runtime is a development dependency only; Hostinger executes nati
 
 Edit `data/adventures.json` for the trip calendar. Keep the status `proposed` until actual arrangements have been made; route references do not establish future availability. Every trip has capacity 4 in addition to Jacob. No automated marketing or confirmation emails are sent.
 
-Update version query strings when changing frontend assets or calendar data.
+Update version query strings when changing frontend assets or calendar data. `assets/landmarks.svg` supplies the landmark symbols; `icon` selects the symbol ID and optional `mapOffset` separates nearby pins without changing their actual coordinates. `distanceLabel` overrides numeric km for ranges or planning targets. Keep retired trip IDs separate from new proposals to preserve the meaning of existing signups. The `#future-adventures` section is reserved for approved trips after 2030.
 
 ## Verify
 
