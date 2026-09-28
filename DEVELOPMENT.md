@@ -22,6 +22,8 @@ Update version query strings when changing frontend assets or calendar data. `as
 
 ## Verify
 
+Each trip's optional `photo` object supplies a local image, alt text, crop position and attribution. Photos load only when their trip opens. Keep photographer/source/license links in the caption and provenance in `assets/photos/CREDITS.md` when replacing an image.
+
 - JavaScript syntax check and `git diff --check`.
 - `python3 tests/check-signups.py` against the local PHP server. It exercises validation, deduplication, simultaneous duplicate requests, four-guest confirmation capacity, withdrawal and rate limits. Only disposable `example.com` records are created; they are cleaned up. The helper currently points to this Mac's PHP-WASM runtime for CLI checks.
 - Browser: all years, map selection, trip expansion, training details, signup success/error, private management page, optional 3D view, phone width and keyboard focus.

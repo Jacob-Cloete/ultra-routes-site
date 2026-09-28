@@ -37,7 +37,16 @@
       "distanceNote": "50–60 km is our planning target, not a measured track. The published reference is about 40 km and includes a bus finish; our proposed all-on-foot extension still needs mapping.",
       "number": "01",
       "capacity": 4,
-      "status": "proposed"
+      "status": "proposed",
+      "photo": {
+        "src": "assets/photos/tre-cime.jpg",
+        "alt": "The three limestone faces of Tre Cime di Lavaredo above a mountain hut.",
+        "position": "50% 50%",
+        "author": "Frisia Orientalis",
+        "source": "https://commons.wikimedia.org/wiki/File:DreiZinnenH%C3%BCtte-2.jpg",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+      }
     },
     {
       "id": "alps-2027",
@@ -73,7 +82,16 @@
       "mapOffset": [
         -40,
         30
-      ]
+      ],
+      "photo": {
+        "src": "assets/photos/mont-blanc.jpg",
+        "alt": "Mont Blanc and Dôme du Goûter seen from the north.",
+        "position": "50% 55%",
+        "author": "Tinelot Wittermans",
+        "source": "https://commons.wikimedia.org/wiki/File:Mont_Blanc_and_Dome_du_Gouter.jpg",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+      }
     },
     {
       "id": "patagonia-2028",
@@ -107,7 +125,16 @@
       "status": "proposed",
       "icon": "torres",
       "landmark": "The three Torres",
-      "distanceLabel": "70–85 km"
+      "distanceLabel": "70–85 km",
+      "photo": {
+        "src": "assets/photos/torres-del-paine.jpg",
+        "alt": "The granite towers of Torres del Paine above the Base Torres viewpoint.",
+        "position": "50% 8%",
+        "author": "Felipedd",
+        "source": "https://commons.wikimedia.org/wiki/File:Torres_del_Paine_(Mirador).jpg",
+        "license": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+      }
     },
     {
       "id": "iceland-2028",
@@ -146,7 +173,16 @@
           "name": "Fimmvörðuháls · Ferðafélag Íslands",
           "url": "https://www.fi.is/en/hiking-trails/trails/fimmvorduhals"
         }
-      ]
+      ],
+      "photo": {
+        "src": "assets/photos/skogafoss.jpg",
+        "alt": "Skógafoss waterfall beneath green cliffs in Iceland.",
+        "position": "65% 50%",
+        "author": "Martin Falbisoner",
+        "source": "https://commons.wikimedia.org/wiki/File:Sk%C3%B3gafoss_July_2014.JPG",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "peru-2029",
@@ -180,7 +216,16 @@
       "distanceNote": "Approximately 50 km in the operator’s four-day itinerary, including the Alpamayo viewpoint and Arhuaycocha excursion. Exact mileage depends on the final stops.",
       "number": "05",
       "capacity": 4,
-      "status": "proposed"
+      "status": "proposed",
+      "photo": {
+        "src": "assets/photos/alpamayo.jpg",
+        "alt": "The snow-covered pyramid of Alpamayo in Peru.",
+        "position": "50% 8%",
+        "author": "Frank R 1981",
+        "source": "https://commons.wikimedia.org/wiki/File:Alpamayo_12.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "rockwall-2029",
@@ -212,7 +257,16 @@
       "distanceNote": "54 km for the Rockwall as published by Parks Canada. The proposed three-day stages depend on campsite availability.",
       "number": "06",
       "capacity": 4,
-      "status": "proposed"
+      "status": "proposed",
+      "photo": {
+        "src": "assets/photos/rockwall.jpg",
+        "alt": "Floe Lake beneath the cliffs of the Rockwall in Canada.",
+        "position": "50% 50%",
+        "author": "Benfwilliamson",
+        "source": "https://commons.wikimedia.org/wiki/File:Floe_Lake,_British_Columbia,_Canada.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "annapurna-2030",
@@ -257,7 +311,16 @@
       ],
       "number": "07",
       "capacity": 4,
-      "status": "proposed"
+      "status": "proposed",
+      "photo": {
+        "src": "assets/photos/machhapuchhre.jpg",
+        "alt": "Machhapuchhre, or Fishtail Mountain, seen from Annapurna Base Camp.",
+        "position": "60% 50%",
+        "author": "Bijay Chaurasia",
+        "source": "https://commons.wikimedia.org/wiki/File:Machhapuchhre_or_Fishtail_Mountain_6,993_m_(22,943_ft)-_IMG_5246.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     },
     {
       "id": "tasmania-2030",
@@ -290,7 +353,16 @@
       "capacity": 4,
       "status": "proposed",
       "icon": "cradle",
-      "landmark": "Cradle Mountain"
+      "landmark": "Cradle Mountain",
+      "photo": {
+        "src": "assets/photos/cradle-mountain.jpg",
+        "alt": "Cradle Mountain above Dove Lake in Tasmania.",
+        "position": "50% 50%",
+        "author": "BennyG3255",
+        "source": "https://commons.wikimedia.org/wiki/File:Cradle_Mountain_over_Dove_Lake,_Tasmania.jpg",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+      }
     }
   ]
 }
