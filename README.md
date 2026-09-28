@@ -1,40 +1,62 @@
-# FAST. — private adventures, personally filmed
+# FAST. — Two adventures a year
 
-Static landing page for https://fast.jacobcloete.pro/. Mountain footage, three original 3D route illustrations, and a minimal private-fastpacking offer.
+Small-group fastpacking calendar for https://fast.jacobcloete.pro/. Eight proposed departures in 2027–2030, four guest places per adventure, a 12-week training lead-in and a film of the trip.
 
-## Develop locally
+## Source files
+
+- `index.html`, `css/adventure.css`, `css/calendar.css`: minimal landing page and responsive calendar.
+- `js/calendar.js`: year filters, world map selection, expandable trip details, optional 3D terrain and signup UI.
+- `data/adventures.json`: proposed dates, training starts, distances, outline stages and primary route references. Edit the calendar here.
+- `api/interest.php`, `api/storage.php`: PHP + PDO SQLite interest storage. No mail service or payment integration is required.
+- `privacy.html`, `manage.html`, `js/manage.js`: data-use explanation and private withdrawal links.
+- `tools/manage-interest.php`: private CLI administration. Never expose it as an HTTP endpoint.
+
+## What the calendar means
+
+Every departure is **proposed**. Months, trail-day counts and overnight stages are planning choices, not confirmed availability. Distances are approximate and sourced in each trip. No huts, permits, commercial permissions, guides, transfers or flights have been booked. Any final sale needs a confirmed itinerary, suitability review, delivery arrangements, price and terms.
+
+Four is the intended guest capacity, in addition to Jacob. An interest signup does **not** use a guest place. There are no fabricated live availability counts. The CLI confirmation operation atomically enforces a maximum of four confirmed guests per trip; further people can remain interested or be marked waitlist.
+
+The 3D views show real terrain at the destinations; no unverified demo line is presented as an actual hiking route. The previous synthetic routes and race viewer remain in Git history and are not loaded by the new page.
+
+## Signups and privacy
+
+The endpoint creates `fast-private/interests.sqlite` outside the public web root. It walks above Hostinger's `public_html` even when FAST is hosted in a subdirectory. Files use restrictive permissions. For other layouts, set `FAST_PRIVATE_DIR` to an absolute directory outside all web roots. PHP needs PDO SQLite and filesystem write permission there. The endpoint fails closed if storage is unavailable.
+
+Records contain name, email, trip, time, consent version, expiry, status and a hash of a random withdrawal token. Signup email addresses are unverified. Duplicates keep the first record and do not issue another private token. No email is sent. The on-screen success message asks visitors to save their private manage link. Invalid input, cross-origin requests and repeated requests are rejected. A one-hour IP-derived hash is used for rate limiting.
+
+A withdrawal removes the record. Remaining records expire four months after the first day of their departure month and are purged when the endpoint next runs. Review and handle these leads regularly; no notification email is configured.
+
+On Hostinger SSH, from the deployed site directory:
 
 ```sh
-python3 -m http.server 8778 --bind 127.0.0.1
+php tools/manage-interest.php list
+php tools/manage-interest.php list scotland-2027
+php tools/manage-interest.php confirm 12
+php tools/manage-interest.php waitlist 12
+php tools/manage-interest.php delete 12
 ```
 
-Open http://127.0.0.1:8778/. There is no build step or package installation.
+`list` emits CSV to the authenticated terminal only. IDs above are examples; inspect your list first. Confirmation is an internal status update, not an email, a payment or a contract. For unusual hosting layouts, set `FAST_DOCUMENT_ROOT` to the actual web document root so the CLI finds the same private directory as HTTP requests. Back up the private database separately from Git.
 
-- `index.html`: page content and asset versions.
-- `css/adventure.css`: layout and responsive styling.
-- `js/adventure.js`: video, terrain, demo route controls and contact behaviour.
-- `js/config.js`: public enquiry email; never add secrets.
-- `data/demo-routes.json`: original synthetic route concepts, approximately 50 km.
-- `tools/build_demo_routes.py`: regenerates that data with standard Python.
+## Local development
 
-Set `enquiryEmail` in `js/config.js` to the chosen contact address to enable an email-draft enquiry. Visitors send it from their own email app; the website does not store or submit personal details. Until an address is configured, the enquiry dialog clearly says enquiries are opening soon and hides the form.
+Use PHP for the complete signup flow:
 
-## Routes and imagery
+```sh
+php -S 127.0.0.1:8778 -t .
+```
 
-The three hand-drawn concepts measure 50.2 km (Alps), 49.6 km (Madeira) and 51.1 km (Cape Town). They are synthetic illustrations, not mapped hiking trails or navigable itineraries. They must retain their visible demo labels. No race GPX files are used by the landing page. Distances measure the drawn line horizontally; access, difficulty and suitability have not been checked.
+A plain Python server can preview the design, but cannot accept signups. The UI reports an error instead of pretending success.
 
-MapLibre GL JS 5.24.0 loads on demand. Imagery: Esri World Imagery; terrain: Mapzen/AWS Terrarium, displayed with 1.15× relief. Attributions remain on-map.
+In this Mac workspace, PHP is also available through the temporary WordPress PHP-WASM test runtime. See `DEVELOPMENT.md`.
 
-Stock media illustrates the setting; it is not footage of a customer trip:
+## Media and map data
 
-- [Taryn Elliott / Pexels](https://www.pexels.com/video/fly-by-drone-shot-over-the-mountains-4046338/): hero film and poster.
-- [Kristian Bechthold / Pexels](https://www.pexels.com/video/cloudy-mountains-27607601/): terrain-loading poster.
-- [Pexels licence](https://www.pexels.com/license/).
+Stock footage by [Taryn Elliott / Pexels](https://www.pexels.com/video/fly-by-drone-shot-over-the-mountains-4046338/) illustrates the setting; it is not customer-trip footage. The local world silhouette is derived from Natural Earth 50m land sampling originally generated for the user's MatricMap project. No MatricMap customer or grade data is used.
 
-Media streams from the providers. Phone, data-saving and reduced-motion users choose when to load video; phones and data-saving users also opt into 3D.
+MapLibre GL JS 5.24.0, Esri satellite imagery and Mapzen/AWS terrain load only when a visitor requests a 3D preview. Phone, data-saving and reduced-motion users choose whether to play video.
 
-## Release
+## Publishing
 
-Use a `codex/` branch, review locally, then merge to `main`. The existing Hostinger GitHub integration deploys the repository root to the subdomain. Check the actual domain after each release. See [DEVELOPMENT.md](DEVELOPMENT.md).
-
-The original race viewer is preserved in Git history at `597e59e`; its old CSS, JavaScript and GPX files remain in the repository but are not loaded. Earlier local design boards in `preview/` are ignored by Git.
+Branch → review and tests → pull request → `main` → Hostinger automatic deployment. Verify the page and one disposable signup/withdrawal on the live domain. Never commit signup data, keys or hosting credentials.

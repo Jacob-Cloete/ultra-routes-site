@@ -1,0 +1,249 @@
+{
+  "reviewed": "2026-09-28",
+  "trips": [
+    {
+      "id": "scotland-2027",
+      "name": "West Highland Way",
+      "region": "Scotland",
+      "country": "United Kingdom",
+      "month": "May",
+      "year": 2027,
+      "training": "February 2027",
+      "km": 69,
+      "days": 3,
+      "coord": [
+        -4.8,
+        56.65
+      ],
+      "route": "Tyndrum → Fort William",
+      "summary": "The northern section of the West Highland Way, from Tyndrum to Fort William.",
+      "stops": [
+        "Tyndrum → Kingshouse",
+        "Kingshouse → Kinlochleven",
+        "Kinlochleven → Fort William"
+      ],
+      "focus": "Sustained climbing, wet-weather kit and comfortable back-to-back trail days.",
+      "note": "Northern section only. Overnight stops and transfers depend on accommodation availability.",
+      "source": "https://www.westhighlandway.org/the-route/suggested-itineraries/",
+      "sourceName": "West Highland Way",
+      "distanceNote": "About 69 km; the official short itinerary lists 43 miles.",
+      "number": "01",
+      "capacity": 4,
+      "status": "proposed"
+    },
+    {
+      "id": "alps-2027",
+      "name": "Aiguilles Rouges",
+      "region": "French Alps",
+      "country": "France",
+      "month": "September",
+      "year": 2027,
+      "training": "June 2027",
+      "km": 50,
+      "days": 3,
+      "coord": [
+        6.85,
+        45.98
+      ],
+      "route": "Chamonix → Aiguilles Rouges → Chamonix",
+      "summary": "A mountain circuit above Chamonix, with views of the Mont Blanc massif.",
+      "stops": [
+        "Chamonix → Lac Blanc area",
+        "Lac Blanc area → Moëde Anterne area",
+        "Moëde Anterne area → Chamonix"
+      ],
+      "focus": "Steep climbing, controlled descents and moving confidently over rocky ground.",
+      "note": "An experienced-mountain-runner trip. Hut stages and a qualified local leader must be arranged before confirmation.",
+      "source": "https://www.chamonix-guides.com/fr/activites/details/trail-tour-du-massif-des-aiguilles-rouges",
+      "sourceName": "Compagnie des Guides de Chamonix",
+      "distanceNote": "About 50 km, based on the established mountain circuit. Our overnight stages are a proposal, not a booked itinerary.",
+      "number": "02",
+      "capacity": 4,
+      "status": "proposed"
+    },
+    {
+      "id": "kepler-2028",
+      "name": "Kepler Track",
+      "region": "New Zealand",
+      "country": "New Zealand",
+      "month": "February",
+      "year": 2028,
+      "training": "November 2027",
+      "km": 60,
+      "days": 3,
+      "coord": [
+        167.6,
+        -45.4
+      ],
+      "route": "Te Anau → Luxmore → Iris Burn → Te Anau",
+      "summary": "A loop through Fiordland’s alpine ridges, beech forest and lakeshores.",
+      "stops": [
+        "Kepler car park → Luxmore Hut",
+        "Luxmore Hut → Iris Burn Hut",
+        "Iris Burn Hut → Kepler car park"
+      ],
+      "focus": "Long descents, exposed ridgelines and carrying everything needed between huts.",
+      "note": "DOC hut bookings and any required commercial permissions are still to be secured. Add travel and weather-buffer days.",
+      "source": "https://www.doc.govt.nz/keplertrack",
+      "sourceName": "New Zealand Department of Conservation",
+      "distanceNote": "60 km for the full loop, as published by DOC.",
+      "number": "03",
+      "capacity": 4,
+      "status": "proposed"
+    },
+    {
+      "id": "iceland-2028",
+      "name": "Laugavegur",
+      "region": "Iceland",
+      "country": "Iceland",
+      "month": "July",
+      "year": 2028,
+      "training": "April 2028",
+      "km": 55,
+      "days": 3,
+      "coord": [
+        -19.3,
+        63.98
+      ],
+      "route": "Landmannalaugar → Þórsmörk",
+      "summary": "A point-to-point route through rhyolite mountains, lava fields and river valleys.",
+      "stops": [
+        "Landmannalaugar → Álftavatn",
+        "Álftavatn → Emstrur",
+        "Emstrur → Þórsmörk"
+      ],
+      "focus": "Pack practice, cold-and-wet preparation and efficient movement on loose terrain.",
+      "note": "Summer road access, hut availability and river conditions determine the final plan. River crossings need an on-site decision.",
+      "source": "https://www.fi.is/en/hiking-trails/trails/laugavegur",
+      "sourceName": "Ferðafélag Íslands",
+      "distanceNote": "Approximately 54–55 km in the trail association’s guide.",
+      "number": "04",
+      "capacity": 4,
+      "status": "proposed"
+    },
+    {
+      "id": "sabie-2029",
+      "name": "Fanie Botha Trail",
+      "region": "South Africa",
+      "country": "South Africa",
+      "month": "April",
+      "year": 2029,
+      "training": "January 2029",
+      "km": 59,
+      "days": 4,
+      "coord": [
+        30.78,
+        -25.03
+      ],
+      "route": "Ceylon → Maritzbos → Stables → Mac Mac → Graskop",
+      "summary": "A forest and escarpment route in the Sabie area of Mpumalanga.",
+      "stops": [
+        "Ceylon → Maritzbos",
+        "Maritzbos → Stables",
+        "Stables → Mac Mac",
+        "Mac Mac → Graskop via Mac Mac Pools"
+      ],
+      "focus": "Uneven forest trails, humid conditions and repeated days with a light pack.",
+      "note": "The longer Graskop finish is proposed. SAFCOL must reconfirm trail access, hut condition, distances and group arrangements.",
+      "source": "https://forestrysouthafrica.co.za/wp-content/uploads/2019/01/Forestry-Explained-Recreational-Map-activities-and-attractions-downloadable-format-Jan-2019.pdf",
+      "sourceName": "Forestry South Africa trail guide",
+      "distanceNote": "About 59 km for the 58.8 km option described in the forestry guide; current alignment must be checked.",
+      "number": "05",
+      "capacity": 4,
+      "status": "proposed"
+    },
+    {
+      "id": "japan-2029",
+      "name": "Kumano Kodo · Kohechi",
+      "region": "Japan",
+      "country": "Japan",
+      "month": "October",
+      "year": 2029,
+      "training": "July 2029",
+      "km": 70,
+      "days": 4,
+      "coord": [
+        135.65,
+        34.0
+      ],
+      "route": "Koyasan → Kumano Hongu Taisha",
+      "summary": "A mountain pilgrimage route linking Koyasan with Kumano Hongu Taisha.",
+      "stops": [
+        "Koyasan → Omata",
+        "Omata → Miura-guchi",
+        "Miura-guchi → Totsukawa",
+        "Totsukawa → Hongu"
+      ],
+      "focus": "Steep passes, stone steps and patient, controlled descending.",
+      "note": "For experienced trail travellers. Every village overnight must be secured; walk through sacred sites and yield to pilgrims.",
+      "source": "https://www.tb-kumano.jp/en/kumano-kodo/kohechi/",
+      "sourceName": "Tanabe City Kumano Tourism Bureau",
+      "distanceNote": "Approximately 65–70 km, depending on endpoints and current diversions.",
+      "number": "06",
+      "capacity": 4,
+      "status": "proposed"
+    },
+    {
+      "id": "patagonia-2030",
+      "name": "Torres del Paine · W",
+      "region": "Patagonia",
+      "country": "Chile",
+      "month": "February",
+      "year": 2030,
+      "training": "November 2029",
+      "km": 70,
+      "days": 4,
+      "coord": [
+        -73.0,
+        -50.98
+      ],
+      "route": "Grey → Paine Grande → French Valley → Base Torres",
+      "summary": "The W route in Torres del Paine, including glacier and mountain viewpoints.",
+      "stops": [
+        "Grey sector → Paine Grande",
+        "Paine Grande → French Valley → Francés area",
+        "Francés area → Central / Chileno area",
+        "Base Torres → Central"
+      ],
+      "focus": "Wind exposure, long undulating days and enough energy for consecutive climbs.",
+      "note": "Exact mileage depends on viewpoints and overnight stops. Refuges, access and transfers are unconfirmed; park conditions may change the route.",
+      "source": "https://helpcenter.lastorres.com/en/help-center-las-torres-patagonia/w-circuit",
+      "sourceName": "Las Torres Patagonia",
+      "distanceNote": "About 70 km in the operator’s overview; side trips and the final itinerary can increase this.",
+      "number": "07",
+      "capacity": 4,
+      "status": "proposed"
+    },
+    {
+      "id": "tasmania-2030",
+      "name": "Overland Track",
+      "region": "Tasmania",
+      "country": "Australia",
+      "month": "November",
+      "year": 2030,
+      "training": "August 2030",
+      "km": 65,
+      "days": 4,
+      "coord": [
+        146.0,
+        -41.9
+      ],
+      "route": "Cradle Mountain → Narcissus Hut",
+      "summary": "A route through the Cradle Mountain–Lake St Clair National Park.",
+      "stops": [
+        "Ronny Creek → Windermere area",
+        "Windermere → Pelion area",
+        "Pelion → Bert Nichols area",
+        "Bert Nichols → Narcissus"
+      ],
+      "focus": "Self-sufficient pack carrying, changeable weather and sustained time on your feet.",
+      "note": "The 65 km plan ends at Narcissus with a booked ferry. Track permits, camping and any commercial permissions must be confirmed.",
+      "source": "https://parks.tas.gov.au/explore-our-parks/cradle-mountain/overland-track",
+      "sourceName": "Tasmania Parks & Wildlife Service",
+      "distanceNote": "65 km to Narcissus; walking around Lake St Clair would add about 17.5 km.",
+      "number": "08",
+      "capacity": 4,
+      "status": "proposed"
+    }
+  ]
+}

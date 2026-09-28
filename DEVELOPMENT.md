@@ -1,43 +1,34 @@
 # FAST development loop
 
-Repository: `Jacob-Cloete/ultra-routes-site`.
-Live domain: `https://fast.jacobcloete.pro/`.
+Repo: `Jacob-Cloete/ultra-routes-site` · Production: https://fast.jacobcloete.pro/
 
-## Work locally
+## Edit
 
-The repository root is now the editable site. The old `preview/` directory contains historical design drafts and is ignored; do not edit it for releases.
+The repository root is the editable site. Historical `preview/` boards are ignored.
 
-```sh
-python3 -m http.server 8778 --bind 127.0.0.1
-```
+Run `php -S 127.0.0.1:8778 -t .` and open http://127.0.0.1:8778/. No frontend build step.
 
-Open http://127.0.0.1:8778/. Edit `index.html`, `css/adventure.css`, `js/adventure.js` and `js/config.js` directly. No build command is required.
-
-When changing CSS, JavaScript or config, update their version query strings in `index.html`. When changing route JSON, update the fetch version in the JS.
-
-Regenerate the original demo geometry with:
+On this Mac, system PHP is not installed. A temporary test runtime was installed in `/private/tmp/fast-php-test` from the official WordPress `@php-wasm/cli` npm package. Use:
 
 ```sh
-python3 tools/build_demo_routes.py
+/Users/jacobcloete/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node /private/tmp/fast-php-test/node_modules/@php-wasm/cli/php-wasm.js -S 127.0.0.1:8778 -t .
 ```
 
-The geometry is illustrative, not a route-planning engine. Keep its demo and not-for-navigation labels until verified hiking itineraries replace it.
+This temporary runtime is a development dependency only; Hostinger executes native PHP. The test database is outside the checkout, in its parent's `fast-private` folder. Never sync that folder to Git or a public directory.
 
-## Check and release
+Edit `data/adventures.json` for the trip calendar. Keep the status `proposed` until actual arrangements have been made; route references do not establish future availability. Every trip has capacity 4 in addition to Jacob. No automated marketing or confirmation emails are sent.
 
-1. Make changes on a `codex/` branch.
-2. Check JavaScript syntax and load the local page in a browser.
-3. Check the hero, route selection, fly/pause/overview controls and enquiry dialog. Check a phone layout, console errors and asset loading.
-4. Push the branch and open a pull request against `main`.
-5. Merge the approved release. Hostinger should pull the updated `main` branch.
-6. Verify the updated page and assets on the actual live domain. If content is stale, check Hostinger deployment status and CDN caching before changing code.
+Update version query strings when changing frontend assets or calendar data.
 
-`main` is the production branch. Avoid force-pushing. Revert the release commit if a rollback is needed. The original race viewer remains recoverable at `597e59eefd8489c69c5481677b4615379c537142`.
+## Verify
 
-## Enquiries
+- JavaScript syntax check and `git diff --check`.
+- `python3 tests/check-signups.py` against the local PHP server. It exercises validation, deduplication, simultaneous duplicate requests, four-guest confirmation capacity, withdrawal and rate limits. Only disposable `example.com` records are created; they are cleaned up. The helper currently points to this Mac's PHP-WASM runtime for CLI checks.
+- Browser: all years, map selection, trip expansion, training details, signup success/error, private management page, optional 3D view, phone width and keyboard focus.
+- Before production, inspect `git status` for accidental private files.
 
-Set the destination email in `js/config.js`. A configured enquiry creates a draft in the visitor's email app. It is sent only when they send that draft. There is no server-side form, CRM, analytics or stored enquiry data.
+## Release
 
-With an empty email setting, the live dialog says enquiries are opening soon and does not present a form that appears to send messages.
+Create a `codex/` branch, push a PR, merge the authorized release to `main`, and verify Hostinger deployed it. Check live assets, PHP submission and withdrawal, plus blocked access to `api/storage.php` and `tools/`. No force push.
 
-Do not put credentials, mailbox passwords or hosting keys into Git.
+The earlier private-adventure launch is in merge `4bb4f0b`; the original race viewer is recoverable at `597e59e`.
