@@ -1,79 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>fast. — Ultra running routes in 3D</title>
-<meta name="description" content="Interactive 3D terrain maps of ultra-trail race routes: UTMB Mont-Blanc, Eiger Ultra Trail E250, Ultra-trail Cape Town, Tor des Géants and Madeira Island Ultra-Trail.">
-<meta name="theme-color" content="#0d1015">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1015'/%3E%3Cpath d='M4 24l7-11 4 6 4-9 9 14z' fill='%23ff5a36'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.css">
-<link rel="stylesheet" href="css/style.css?v=12">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>FAST. — Private adventures, personally filmed</title>
+  <meta name="description" content="Private fastpacking adventures with personal training, equipment guidance and a film to keep.">
+  <link rel="canonical" href="https://fast.jacobcloete.pro/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fast.jacobcloete.pro/">
+  <meta property="og:title" content="FAST. — Private adventures, personally filmed">
+  <meta property="og:description" content="Personal training. Equipment guidance. A private adventure, filmed.">
+  <meta property="og:image" content="https://images.pexels.com/videos/4046338/pexels-photo-4046338.jpeg?auto=compress&amp;w=1200">
+  <link rel="preconnect" href="https://images.pexels.com">
+  <link rel="stylesheet" href="css/adventure.css?v=20260928-1">
+  <script src="js/config.js?v=20260928-1" defer></script>
+  <script src="js/adventure.js?v=20260928-1" defer></script>
 </head>
 <body>
-
-<main class="stage">
-  <div id="map" aria-label="3D route map"></div>
-
-  <aside class="panel" id="panel">
-    <header class="panel-head">
-      <a class="brand" href="https://jacobcloete.pro" title="jacobcloete.pro">fast<span>.</span></a>
-      <p class="tagline">Ultra routes in 3D</p>
-    </header>
-
-    <nav class="route-tabs" id="route-tabs" role="tablist" aria-label="Race routes"></nav>
-
-    <section class="route-info" aria-live="polite">
-      <h1 id="route-name">&nbsp;</h1>
-      <p class="route-place" id="route-place">&nbsp;</p>
-      <dl class="stats">
-        <div><dt>Distance</dt><dd id="stat-dist">–</dd></div>
-        <div><dt>Climb</dt><dd id="stat-gain">–</dd></div>
-        <div><dt>High point</dt><dd id="stat-max">–</dd></div>
-        <div><dt>Low point</dt><dd id="stat-min">–</dd></div>
-      </dl>
-      <p class="route-blurb" id="route-blurb"></p>
+  <a class="skip-link" href="#experience">Skip to the experience</a>
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-poster" src="https://images.pexels.com/videos/4046338/pexels-photo-4046338.jpeg?auto=compress&amp;w=1600" alt="" fetchpriority="high">
+      <video class="hero-video" muted playsinline loop preload="none" aria-hidden="true"></video>
+      <header><a class="wordmark" href="#" aria-label="FAST home">FAST<span>.</span></a><span class="header-label">Private fastpacking</span></header>
+      <div class="hero-copy"><h1 id="hero-title">Private adventures.<br><em>Personally filmed.</em></h1></div>
+      <div class="hero-bottom"><a href="#mountain-routes" class="explore-link" aria-label="Explore the mountains" title="Explore the mountains"><span aria-hidden="true">↓</span></a><button type="button" class="film-toggle" aria-label="Play mountain footage" title="Play mountain footage"><span aria-hidden="true">▷</span></button></div>
+      <span class="film-status" role="status"></span>
     </section>
 
-    <section class="controls" aria-label="Map controls">
-      <div class="control-row">
-        <button type="button" class="btn btn-primary" id="fly-btn">
-          <span class="ico" id="fly-ico">▶</span><span id="fly-label">Fly the route</span>
-        </button>
-        <button type="button" class="btn btn-square" id="speed-btn" title="Fly-through speed" aria-label="Fly-through speed">1×</button>
-        <button type="button" class="btn btn-square" id="reset-btn" title="Show whole route" aria-label="Show whole route">⤢</button>
+    <section id="mountain-routes" class="landscapes" aria-labelledby="landscape-title">
+      <h2 id="landscape-title" class="sr-only">Explore the mountains</h2>
+      <div class="places" role="group" aria-label="Mountain landscapes"><button type="button" data-place="alps" aria-pressed="true">The Alps</button><button type="button" data-place="madeira" aria-pressed="false">Madeira</button><button type="button" data-place="cape" aria-pressed="false">Cape Town</button></div>
+      <div class="terrain-shell">
+        <div id="terrain" aria-label="Illustrative demo route over 3D mountain terrain"></div>
+        <div class="terrain-cover"><button type="button" class="load-terrain">Explore in 3D <span aria-hidden="true">↗</span></button><span>Satellite imagery · uses data</span></div>
+        <span class="terrain-status" role="status" hidden></span>
+        <span class="demo-label" hidden aria-live="polite">Demo route · ~50 km</span>
+        <div class="route-controls" hidden><button type="button" class="fly-route" aria-pressed="false">Fly route <span aria-hidden="true">▷</span></button><output class="route-position" aria-label="Distance along the demo route">0.0 km</output><button type="button" class="route-overview" aria-label="Show whole route" title="Show whole route"><span aria-hidden="true">⤢</span></button></div>
       </div>
-      <div class="control-row">
-        <div class="seg" role="group" aria-label="Base map">
-          <button type="button" class="seg-btn is-active" data-basemap="satellite">Satellite</button>
-          <button type="button" class="seg-btn" data-basemap="topo">Topo</button>
-        </div>
-      </div>
-      <label class="control-row slider-row">
-        <span>Relief <b id="relief-val">×1.3</b></span>
-        <input type="range" id="relief" min="1" max="2.5" step="0.1" value="1.3" aria-label="Terrain exaggeration">
-      </label>
+      <div class="map-caption"><span>Illustrative routes · not for navigation</span><span class="map-help">Drag to explore · Ctrl/⌘ + scroll to zoom</span></div>
     </section>
 
-    <footer class="panel-foot">
-      <span id="route-edition"></span> GPX from <a id="route-source" href="#" target="_blank" rel="noopener"></a>.
-      Stats are computed from the track.
-    </footer>
-  </aside>
-
-  <div class="loading" id="loading" hidden><span class="spinner"></span><span id="loading-text">Loading route…</span></div>
-</main>
-
-<section class="profile" id="profile" aria-label="Elevation profile">
-  <div class="profile-head">
-    <span class="profile-title">Elevation</span>
-    <span class="profile-readout" id="readout">Hover the profile or the route · click to jump there</span>
-  </div>
-  <canvas id="profile-canvas"></canvas>
-</section>
-
-<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
-<script src="js/routes.js?v=12"></script>
-<script src="js/app.js?v=12"></script>
+    <section id="experience" class="experience" aria-labelledby="experience-title">
+      <div class="offer-intro"><h2 id="experience-title">Made <em>for you.</em></h2><button type="button" class="enquire">Enquire <span aria-hidden="true">↗</span></button></div>
+      <ul class="inclusions"><li>Personal training. Weekly video calls.</li><li>Equipment guidance. Your own kit list.</li><li>A private adventure. A film to keep.</li></ul>
+    </section>
+  </main>
+  <footer><span>FAST. by Jacob Cloete</span><div><details><summary>Credits</summary><p>Stock footage: <a href="https://www.pexels.com/video/fly-by-drone-shot-over-the-mountains-4046338/" target="_blank" rel="noopener noreferrer">Taryn Elliott / Pexels</a>.<br>Mountain photograph: <a href="https://www.pexels.com/video/cloudy-mountains-27607601/" target="_blank" rel="noopener noreferrer">Kristian Bechthold / Pexels</a>.</p></details></div></footer>
+  <dialog aria-labelledby="enquiry-title"><button type="button" class="close-dialog" aria-label="Close enquiry">×</button><span class="eyebrow">Your private adventure</span><h2 id="enquiry-title">Where would you go?</h2><p class="preview-note">Enquiries are opening soon.</p><form hidden><label>Your name<input name="name" autocomplete="name" required maxlength="100"></label><label>Email<input name="email" type="email" autocomplete="email" required maxlength="254"></label><label>What do you have in mind?<textarea name="message" rows="3" required maxlength="2000" placeholder="A place, a date, or an ambition…"></textarea></label><button type="submit" class="enquire">Open email draft <span aria-hidden="true">↗</span></button><p class="enquiry-status" role="status"></p></form></dialog>
 </body>
 </html>

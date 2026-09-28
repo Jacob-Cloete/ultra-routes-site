@@ -1,1 +1,4 @@
 .DS_Store
+# Historical local design boards. Production files live at the repository root.
+/preview/
+__pycache__/
